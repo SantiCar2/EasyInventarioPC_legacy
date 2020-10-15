@@ -5,13 +5,13 @@ public class main {
 		// TODO Auto-generated method stub
 		login init = new login();
 		while (!init.auth) {
-			init.frame.setVisible(true);
+			init.frmInicioDeSesin.setVisible(true);
 			
 		}
 		Maint main = new Maint();
-		init.frame.setVisible(false);
+		init.frmInicioDeSesin.setVisible(false);
 		main.frame.setVisible(true);
-		init.frame.dispose();
+		init.frmInicioDeSesin.dispose();
 		
 	}
 
