@@ -61,8 +61,13 @@ public class Maint {
 	    frame.getContentPane().add(scrollPane);
 	    
 	    table = new JTable(data, columnname);
+	    table.setRowSelectionAllowed(false);
 	    scrollPane.setViewportView(table);
 	    table.setFillsViewportHeight(true);
+	    
+	    JLabel lblNewLabel_1 = new JLabel("Vista previa (no editable):");
+	    lblNewLabel_1.setBounds(12, 37, 163, 16);
+	    frame.getContentPane().add(lblNewLabel_1);
 		JLabel lblNewLabel = new JLabel("Tabla registrada en el servidor");
 		lblNewLabel.setBounds(10, 11, 190, 14);
 

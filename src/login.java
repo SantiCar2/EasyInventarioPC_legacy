@@ -1,3 +1,4 @@
+import java.awt.Desktop;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,6 +8,8 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 
 public class login {
@@ -15,7 +18,7 @@ public class login {
 	private JTextField txtCorreo;
 	private JPasswordField passwordField;
 	public static boolean auth = false;
-	public static String buf = null;
+	public static String buf = "1234";
 
 	/**
 	 * Launch the application.
@@ -97,7 +100,29 @@ public class login {
 		frmInicioDeSesin.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Olvid\u00E9 mi contrase\u00F1a");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					openWebpage(new URI("https://forms.gle/WVV6i6ctkzmMT2Pa7"));
+				} catch (URISyntaxException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNewButton_2.setBounds(216, 47, 190, 23);
 		frmInicioDeSesin.getContentPane().add(btnNewButton_2);
+	}
+	
+	public static boolean openWebpage(URI uri) {
+	    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+	    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+	        try {
+	            desktop.browse(uri);
+	            return true;
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return false;
 	}
 }
