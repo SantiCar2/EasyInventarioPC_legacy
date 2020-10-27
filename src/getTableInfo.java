@@ -68,5 +68,20 @@ public class getTableInfo {
 		}
 		return list;
 	}
+	public static ResultSet getResultSet(String tableId) {  //NO SIRVE PA NADA POR EL MOMENTO
+		ResultSet ret = null;
+		try {
+			Class.forName("com.mysql.jbdc.Driver");
+			Connection CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			Statement stmt = CON.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `" + tableId + "`");
+			ret = rs;
+			CON.close();
+		}catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+		}
+		return ret;
+	}
 	
 }

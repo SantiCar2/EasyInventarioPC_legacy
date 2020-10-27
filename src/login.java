@@ -12,13 +12,14 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 
+
 public class login {
 
 	public JFrame frmInicioDeSesin;
 	private JTextField txtCorreo;
 	private JPasswordField passwordField;
 	public static boolean auth = false;
-	public static String buf = "1234";
+	public static String buf = null;
 
 	/**
 	 * Launch the application.
