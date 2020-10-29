@@ -1,10 +1,12 @@
+import java.awt.FontFormatException;
+import java.io.IOException;
 
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FontFormatException, IOException {
 		// TODO Auto-generated method stub
 		login init = new login();
-		while (!init.auth) {
+		while (!login.auth) {
 			init.frmInicioDeSesin.setVisible(true);
 			
 		}

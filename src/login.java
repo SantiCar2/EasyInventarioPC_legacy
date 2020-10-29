@@ -1,5 +1,8 @@
 import java.awt.Desktop;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,9 +11,14 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
+import java.awt.Window.Type;
+import java.awt.Color;
+import java.awt.Toolkit;
 
 
 public class login {
@@ -20,6 +28,9 @@ public class login {
 	private JPasswordField passwordField;
 	public static boolean auth = false;
 	public static String buf = null;
+	public static boolean registrando = false;
+	registro reg = new registro();
+	boolean y = false;
 
 	/**
 	 * Launch the application.
@@ -39,33 +50,48 @@ public class login {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
+	 * @throws FontFormatException 
 	 */
-	public login() {
+	public login() throws FontFormatException, IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
+	 * @throws FontFormatException 
 	 */
-	private void initialize() {
+	private void initialize() throws FontFormatException, IOException {
+		
+		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\font.ttf"));
+		font = font.deriveFont(Font.PLAIN, 15);
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		ge.registerFont(font);
+		
+		
+	
+		
 		frmInicioDeSesin = new JFrame();
+		frmInicioDeSesin.setAutoRequestFocus(false);
+		frmInicioDeSesin.setResizable(false);
+		frmInicioDeSesin.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\Asset 1.png"));
+		frmInicioDeSesin.getContentPane().setBackground(Color.WHITE);
+		frmInicioDeSesin.setBackground(Color.WHITE);
 		frmInicioDeSesin.setTitle("Inicio de sesi\u00F3n");
-		frmInicioDeSesin.setBounds(100, 100, 435, 163);
+		frmInicioDeSesin.setBounds(100, 100, 512, 142);
 		frmInicioDeSesin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmInicioDeSesin.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Intoduzca sus credenciales");
-		lblNewLabel.setBounds(10, 11, 136, 14);
-		frmInicioDeSesin.getContentPane().add(lblNewLabel);
-		
 		txtCorreo = new JTextField();
+		txtCorreo.setFont(font);
 		txtCorreo.setToolTipText("Usuario");
-		txtCorreo.setBounds(10, 48, 198, 20);
+		txtCorreo.setBounds(10, 30, 198, 23);
 		frmInicioDeSesin.getContentPane().add(txtCorreo);
 		txtCorreo.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(10, 92, 198, 20);
+		passwordField.setBounds(10, 77, 198, 23);
 		frmInicioDeSesin.getContentPane().add(passwordField);
 		
 		JButton btnNewButton = new JButton("Entrar");
@@ -74,7 +100,7 @@ public class login {
 				if(txtCorreo.getText() != null && passwordField.getText() != null) {
 					buf = authenticator.connect(txtCorreo.getText(), AES.encrypt(passwordField.getText(), AES.keyString));
 					if(buf != null && !buf.contains("E")) {
-						JOptionPane.showMessageDialog(null, "Se ha conectado exitosamente al servidor!" ,"Info", 1);
+						//JOptionPane.showMessageDialog(null, "Se ha conectado exitosamente al servidor!" ,"Info", 1);
 						auth = true;
 					}else if (buf != null) {
 						buf = buf.split(":", 2)[1];
@@ -85,19 +111,32 @@ public class login {
 				}
 			}
 		});
-		btnNewButton.setBounds(317, 91, 89, 23);
+		btnNewButton.setBounds(357, 76, 135, 23);
 		frmInicioDeSesin.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("Usuario");
-		lblNewLabel_1.setBounds(10, 34, 46, 14);
+		JLabel lblNewLabel_1 = new JLabel("Usuario:");
+		lblNewLabel_1.setFont(font);
+		lblNewLabel_1.setBounds(10, 11, 89, 14);
 		frmInicioDeSesin.getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Contrase\u00F1a");
-		lblNewLabel_2.setBounds(10, 78, 89, 14);
+		JLabel lblNewLabel_2 = new JLabel("Contrase\u00F1a:");
+		lblNewLabel_2.setFont(font);
+		lblNewLabel_2.setBounds(10, 61, 89, 14);
 		frmInicioDeSesin.getContentPane().add(lblNewLabel_2);
 		
 		JButton btnNewButton_1 = new JButton("Registro");
-		btnNewButton_1.setBounds(216, 91, 89, 23);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				registrando = true;
+				if(registrando) {
+					registrando = false;
+					registro.frmRegistro.setVisible(true);
+				}
+				
+				
+			}
+		});
+		btnNewButton_1.setBounds(216, 76, 135, 23);
 		frmInicioDeSesin.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Olvid\u00E9 mi contrase\u00F1a");
@@ -110,8 +149,14 @@ public class login {
 				}
 			}
 		});
-		btnNewButton_2.setBounds(216, 47, 190, 23);
+		btnNewButton_2.setBounds(216, 29, 276, 23);
 		frmInicioDeSesin.getContentPane().add(btnNewButton_2);
+		
+		
+		btnNewButton.setFont(font);
+		btnNewButton_1.setFont(font);
+		btnNewButton_2.setFont(font);
+		
 	}
 	
 	public static boolean openWebpage(URI uri) {

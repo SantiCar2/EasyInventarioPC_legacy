@@ -68,7 +68,7 @@ public class getTableInfo {
 		}
 		return list;
 	}
-	public static ResultSet getResultSet(String tableId) {  //NO SIRVE PA NADA POR EL MOMENTO
+	public static ResultSet getResultSet(String tableId) {  //NO SIRVE PARA NADA POR EL MOMENTO
 		ResultSet ret = null;
 		try {
 			Class.forName("com.mysql.jbdc.Driver");

@@ -1,4 +1,7 @@
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -12,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class Maint {
@@ -37,15 +42,27 @@ public class Maint {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
+	 * @throws FontFormatException 
 	 */
-	public Maint() {
+	public Maint() throws FontFormatException, IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
+	 * @throws FontFormatException 
 	 */
-	private void initialize() {
+	private void initialize() throws FontFormatException, IOException {
+		
+		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\font.ttf"));
+		font = font.deriveFont(Font.PLAIN, 15);
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		ge.registerFont(font);
+		
+		
+		
 		frame = new JFrame();
 		frame.setTitle("EasyInventario");
 		frame.setBounds(100, 100, 752, 416);
@@ -74,7 +91,7 @@ public class Maint {
 	    table.setFillsViewportHeight(true);
 	    
 	    JLabel lblNewLabel_1 = new JLabel("Vista previa de contenidos de tabla:");
-	    lblNewLabel_1.setBounds(12, 37, 211, 16);
+	    lblNewLabel_1.setBounds(12, 37, 401, 16);
 	    frame.getContentPane().add(lblNewLabel_1);
 	    
 	    JButton btnNewButton = new JButton("Actualizar");
@@ -103,6 +120,10 @@ public class Maint {
 	    frame.getContentPane().add(btnNewButton_1);
 		JLabel lblNewLabel = new JLabel("Tabla registrada en el servidor");
 		lblNewLabel.setBounds(10, 11, 190, 14);
+		
+		lblNewLabel_1.setFont(font);
+		btnNewButton.setFont(font);
+		btnNewButton_1.setFont(font);
 
 	}
 }
