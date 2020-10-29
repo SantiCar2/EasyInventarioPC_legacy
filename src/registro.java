@@ -37,6 +37,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
 import javax.swing.JSeparator;
+import javax.swing.JPanel;
 
 public class registro {
 
@@ -327,6 +328,7 @@ public class registro {
 						passwordField_1.setText("");
 						tableid = registroBack.getId();
 						lblNewLabel_5.setText(tableid);
+						registro2.contentPane.setVisible(true);
 						frmRegistro.dispose();
 					} else {
 						passwordField.setText("");
@@ -364,6 +366,8 @@ public class registro {
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBounds(497, 8, 2, 316);
 		frmRegistro.getContentPane().add(separator);
+		
+		
 		
 	}
 }
