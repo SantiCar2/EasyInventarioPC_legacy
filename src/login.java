@@ -79,19 +79,19 @@ public class login {
 		frmInicioDeSesin.getContentPane().setBackground(Color.WHITE);
 		frmInicioDeSesin.setBackground(Color.WHITE);
 		frmInicioDeSesin.setTitle("Inicio de sesi\u00F3n");
-		frmInicioDeSesin.setBounds(100, 100, 512, 142);
+		frmInicioDeSesin.setBounds(100, 100, 666, 142);
 		frmInicioDeSesin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmInicioDeSesin.getContentPane().setLayout(null);
 		
 		txtCorreo = new JTextField();
 		txtCorreo.setFont(font);
 		txtCorreo.setToolTipText("Usuario");
-		txtCorreo.setBounds(10, 30, 198, 23);
+		txtCorreo.setBounds(10, 30, 350, 23);
 		frmInicioDeSesin.getContentPane().add(txtCorreo);
 		txtCorreo.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(10, 77, 198, 23);
+		passwordField.setBounds(10, 77, 350, 23);
 		frmInicioDeSesin.getContentPane().add(passwordField);
 		
 		JButton btnNewButton = new JButton("Entrar");
@@ -107,16 +107,17 @@ public class login {
 						JOptionPane.showMessageDialog(null, buf ,"Error", 0);
 					}else{
 						JOptionPane.showMessageDialog(null, "Credenciales incorrectas" ,"Error", 0);
+						passwordField.setText("");
 					}
 				}
 			}
 		});
-		btnNewButton.setBounds(357, 76, 135, 23);
+		btnNewButton.setBounds(513, 77, 135, 23);
 		frmInicioDeSesin.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("Usuario:");
+		JLabel lblNewLabel_1 = new JLabel("Correo electronico:");
 		lblNewLabel_1.setFont(font);
-		lblNewLabel_1.setBounds(10, 11, 89, 14);
+		lblNewLabel_1.setBounds(10, 11, 183, 14);
 		frmInicioDeSesin.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Contrase\u00F1a:");
@@ -136,20 +137,21 @@ public class login {
 				
 			}
 		});
-		btnNewButton_1.setBounds(216, 76, 135, 23);
+		btnNewButton_1.setBounds(372, 77, 135, 23);
 		frmInicioDeSesin.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Olvid\u00E9 mi contrase\u00F1a");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+				/*try {
 					openWebpage(new URI("https://forms.gle/WVV6i6ctkzmMT2Pa7"));
 				} catch (URISyntaxException e1) {
 					e1.printStackTrace();
-				}
+				}*/
+				forgotpass.main();
 			}
 		});
-		btnNewButton_2.setBounds(216, 29, 276, 23);
+		btnNewButton_2.setBounds(372, 30, 276, 23);
 		frmInicioDeSesin.getContentPane().add(btnNewButton_2);
 		
 		

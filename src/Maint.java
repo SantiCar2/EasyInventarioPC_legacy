@@ -108,11 +108,11 @@ public class Maint {
 	    		table.setModel(tableModel);
 	    	}
 	    });
-	    btnNewButton.setBounds(626, 27, 98, 26);
+	    btnNewButton.setBounds(616, 28, 110, 26);
 	    frame.getContentPane().add(btnNewButton);
 	    
 	    JButton btnNewButton_1 = new JButton("Editar");
-	    btnNewButton_1.setBounds(516, 27, 98, 26);
+	    btnNewButton_1.setBounds(496, 28, 110, 26);
 	    frame.getContentPane().add(btnNewButton_1);
 		JLabel lblNewLabel = new JLabel("Tabla registrada en el servidor");
 		lblNewLabel.setBounds(10, 11, 190, 14);

@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/santi/eclipse-workspace/MYSQL TEST/lib/mysql-connector-java-8.0.21.jar"/>
 	<classpathentry kind="lib" path="C:/Users/santi/eclipse-workspace/Proyecto 2/lib/commons-dbutils-1.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/santi/eclipse-workspace/Proyecto 2/lib/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/santi/eclipse-workspace/Proyecto 2/lib/activation.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

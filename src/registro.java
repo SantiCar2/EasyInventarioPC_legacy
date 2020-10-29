@@ -313,6 +313,29 @@ public class registro {
 					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden" ,"Error", 0);
 				} else {
 					System.out.println("Info good " + AES.encrypt(passwordField.getText(), AES.keyString));
+					
+					if(registroBack.registrar(textField_1.getText(), AES.encrypt(passwordField.getText(), AES.keyString), tableid)) {
+						textField.setText("");
+						textField_1.setText("");
+						textField_2.setText("");
+						textField_3.setText("");
+						textField_4.setText("");
+						textField_5.setText("");
+						textField_6.setText("");
+						textField_7.setText("");
+						passwordField.setText("");
+						passwordField_1.setText("");
+						tableid = registroBack.getId();
+						lblNewLabel_5.setText(tableid);
+						frmRegistro.dispose();
+					} else {
+						passwordField.setText("");
+						passwordField_1.setText("");
+						tableid = registroBack.getId();
+						lblNewLabel_5.setText(tableid);
+					}
+					
+					
 			        }
 			}
 		});
