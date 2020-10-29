@@ -42,4 +42,9 @@ public class registroBack {
 		}
 		return id;
 	}
+	
+	
+	public static void registrar(String mail, String pass, String tableid) {
+		
+	}
 }

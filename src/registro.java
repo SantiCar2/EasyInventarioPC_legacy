@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import java.awt.Window.Type;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -28,9 +30,13 @@ import com.mysql.cj.x.protobuf.MysqlxNotice.Frame;
 
 import java.awt.SystemColor;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JProgressBar;
+import javax.swing.JSeparator;
 
 public class registro {
 
@@ -80,9 +86,9 @@ public class registro {
 	 */
 	private void initialize() throws FontFormatException, IOException {
 		
-		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\font.ttf"));
+		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("font.ttf"));
 		font = font.deriveFont(Font.PLAIN, 15);
-		Font font2 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\font.ttf"));
+		Font font2 = Font.createFont(Font.TRUETYPE_FONT, new File("font.ttf"));
 		font2 = font2.deriveFont(Font.PLAIN, 25);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		ge.registerFont(font);
@@ -307,10 +313,10 @@ public class registro {
 					JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden" ,"Error", 0);
 				} else {
 					System.out.println("Info good " + AES.encrypt(passwordField.getText(), AES.keyString));
-				}
+			        }
 			}
 		});
-		btnNewButton.setBounds(621, 305, 107, 23);
+		btnNewButton.setBounds(623, 301, 107, 23);
 		frmRegistro.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
@@ -320,7 +326,7 @@ public class registro {
 				frmRegistro.dispose();
 			}
 		});
-		btnNewButton_1.setBounds(512, 304, 99, 23);
+		btnNewButton_1.setBounds(512, 301, 99, 23);
 		frmRegistro.getContentPane().add(btnNewButton_1);
 		
 		btnNewButton.setFont(font);
@@ -330,6 +336,11 @@ public class registro {
 		lblNewLabel_6.setBounds(12, 12, 111, 34);
 		frmRegistro.getContentPane().add(lblNewLabel_6);
 		lblNewLabel_6.setFont(font2);
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(497, 8, 2, 316);
+		frmRegistro.getContentPane().add(separator);
 		
 	}
 }

@@ -6,12 +6,8 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
-import org.apache.commons.dbutils.DbUtils;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -56,7 +52,7 @@ public class Maint {
 	 */
 	private void initialize() throws FontFormatException, IOException {
 		
-		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\font.ttf"));
+		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("font.ttf"));
 		font = font.deriveFont(Font.PLAIN, 15);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		ge.registerFont(font);

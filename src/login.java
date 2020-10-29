@@ -64,7 +64,7 @@ public class login {
 	 */
 	private void initialize() throws FontFormatException, IOException {
 		
-		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\font.ttf"));
+		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("font.ttf"));
 		font = font.deriveFont(Font.PLAIN, 15);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		ge.registerFont(font);
@@ -75,7 +75,7 @@ public class login {
 		frmInicioDeSesin = new JFrame();
 		frmInicioDeSesin.setAutoRequestFocus(false);
 		frmInicioDeSesin.setResizable(false);
-		frmInicioDeSesin.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\Asset 1.png"));
+		frmInicioDeSesin.setIconImage(Toolkit.getDefaultToolkit().getImage("Asset 1.png"));
 		frmInicioDeSesin.getContentPane().setBackground(Color.WHITE);
 		frmInicioDeSesin.setBackground(Color.WHITE);
 		frmInicioDeSesin.setTitle("Inicio de sesi\u00F3n");
