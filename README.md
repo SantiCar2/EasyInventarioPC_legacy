@@ -1,6 +1,6 @@
 # EasyInventarioPC
 
-# IP de prueba: 190.249.57.11
+# IP de prueba: 190.249.***.***
 
 * Credenciales de prueba:
 test:4815162342
