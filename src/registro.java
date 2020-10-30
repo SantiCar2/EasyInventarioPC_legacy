@@ -303,6 +303,8 @@ public class registro {
 		lblNewLabel_4.setFont(font);
 		lblNewLabel_5.setFont(font2);
 		
+		
+		
 		JButton btnNewButton = new JButton("Continuar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -328,7 +330,6 @@ public class registro {
 						passwordField_1.setText("");
 						tableid = registroBack.getId();
 						lblNewLabel_5.setText(tableid);
-						registro2.contentPane.setVisible(true);
 						frmRegistro.dispose();
 					} else {
 						passwordField.setText("");

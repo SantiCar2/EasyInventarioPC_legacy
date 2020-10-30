@@ -4,11 +4,13 @@ import java.sql.*;
 
 public class authenticator {
 	private static final String CONN = "jdbc:mysql://190.249.57.11:25565/login";
+	public static boolean payment = false;
 	public static String connect(String user, String pass) {
 		String ret = null;
 		boolean email = false;
 		boolean password = false;
 		int row = 0;
+		
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -47,6 +49,7 @@ public class authenticator {
 					rs1.next();					
 				}
 				ret = Integer.toString(rs1.getInt("tableId"));
+				payment = rs1.getBoolean("payment");
 				CON.close();
 			}
 			

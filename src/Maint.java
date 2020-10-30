@@ -8,6 +8,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -52,10 +53,25 @@ public class Maint {
 	 */
 	private void initialize() throws FontFormatException, IOException {
 		
+		registro2 pago = new registro2();
+		
 		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("font.ttf"));
 		font = font.deriveFont(Font.PLAIN, 15);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		ge.registerFont(font);
+		
+		JButton btnNewButton_1 = new JButton("Editar");
+		JButton btnNewButton_2 = new JButton("Pagar");;
+		
+		if(authenticator.payment) {
+			btnNewButton_2.setEnabled(false);
+		} else {
+			btnNewButton_1.setEnabled(false);
+			JOptionPane.showMessageDialog(null, "Para poder acceder a la\n"
+					+ "funcionalidad completa del software\n"
+					+ "recuerda que debes pagar por tu licencia.\n\n"
+					+ "Por un valor de: $" + registro2.precio + "USD" ,"Info", 1);
+		}
 		
 		
 		
@@ -111,7 +127,11 @@ public class Maint {
 	    btnNewButton.setBounds(616, 28, 110, 26);
 	    frame.getContentPane().add(btnNewButton);
 	    
-	    JButton btnNewButton_1 = new JButton("Editar");
+	    
+	    btnNewButton_1.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    	}
+	    });
 	    btnNewButton_1.setBounds(496, 28, 110, 26);
 	    frame.getContentPane().add(btnNewButton_1);
 		JLabel lblNewLabel = new JLabel("Tabla registrada en el servidor");
@@ -120,6 +140,17 @@ public class Maint {
 		lblNewLabel_1.setFont(font);
 		btnNewButton.setFont(font);
 		btnNewButton_1.setFont(font);
+		
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pago.getContentPane().setVisible(true);
+				
+				
+			}
+		});
+		btnNewButton_2.setBounds(397, 28, 89, 26);
+		frame.getContentPane().add(btnNewButton_2);
+		btnNewButton_2.setFont(font);
 
 	}
 }
