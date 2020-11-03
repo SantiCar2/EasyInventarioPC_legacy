@@ -27,7 +27,7 @@ public class login {
 	private JTextField txtCorreo;
 	private JPasswordField passwordField;
 	public static boolean auth = false;
-	public static String buf = null;
+	public static String buf = "1234";
 	public static boolean registrando = false;
 	registro reg = new registro();
 	boolean y = false;

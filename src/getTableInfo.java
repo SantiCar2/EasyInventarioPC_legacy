@@ -46,7 +46,7 @@ public class getTableInfo {
 		return list;
 	}
 	
-	public static String[] getColumnNames(String tableId) {
+	public static String[] getColumnNames(String tableId, boolean id) {
 		String list[] = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -58,13 +58,33 @@ public class getTableInfo {
 			for (int i = 0; i < rsmd.getColumnCount(); i++) {
 				list[i] = rsmd.getColumnLabel(i + 1).toString();
 			}
-			
 			CON.close();
 		}catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);
 			list = new String[1]; 
 			list[0] = "E " + e.toString(); 
+		}
+		if(!id) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+				Statement stmt = CON.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM `" + tableId + "`");
+				ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+				list = new String[rsmd.getColumnCount() - 1];
+				for (int i = 0; i < rsmd.getColumnCount(); i++) {
+					if(i != 0) {
+						list[i - 1] = rsmd.getColumnLabel(i + 1).toString();
+					}
+				}
+				CON.close();
+			}catch (SQLException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e);
+				list = new String[1]; 
+				list[0] = "E " + e.toString(); 
+			}
 		}
 		return list;
 	}
@@ -82,6 +102,26 @@ public class getTableInfo {
 			System.out.println(e);
 		}
 		return ret;
+	}
+	public static String[][] getColumnNameID(String tableId, String columName) {
+		String list[][] = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			Statement stmt = CON.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT id," + columName + " FROM `" + tableId + "`");
+			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+			list = new String[1][rsmd.getColumnCount()];
+			
+			
+			CON.close();
+		}catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e);
+			list = new String[0][0]; 
+			list[0][0] = "E " + e.toString(); 
+		}
+		return list;
 	}
 	
 }

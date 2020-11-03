@@ -18,8 +18,11 @@ import java.awt.event.ActionEvent;
 
 public class Maint {
 
+	
+	public double precio = 12.99;
 	public JFrame frame;
 	private JTable table;
+	EditTableWindow edit = new EditTableWindow();
 
 	/**
 	 * Launch the application.
@@ -53,7 +56,6 @@ public class Maint {
 	 */
 	private void initialize() throws FontFormatException, IOException {
 		
-		registro2 pago = new registro2();
 		
 		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("font.ttf"));
 		font = font.deriveFont(Font.PLAIN, 15);
@@ -70,7 +72,7 @@ public class Maint {
 			JOptionPane.showMessageDialog(null, "Para poder acceder a la\n"
 					+ "funcionalidad completa del software\n"
 					+ "recuerda que debes pagar por tu licencia.\n\n"
-					+ "Por un valor de: $" + registro2.precio + "USD" ,"Info", 1);
+					+ "Por un valor de: $" + precio + "USD" ,"Info", 1);
 		}
 		
 		
@@ -81,7 +83,7 @@ public class Maint {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		String[] columnname = getTableInfo.getColumnNames(login.buf);
+		String[] columnname = getTableInfo.getColumnNames(login.buf, true);
 		String[][] data = getTableInfo.getValues(login.buf);
 		
 		for (int i = 0; i < columnname.length; i++) {
@@ -109,7 +111,7 @@ public class Maint {
 	    JButton btnNewButton = new JButton("Actualizar");
 	    btnNewButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		String[] columnname = getTableInfo.getColumnNames(login.buf);
+	    		String[] columnname = getTableInfo.getColumnNames(login.buf, true);
 	    		String[][] data = getTableInfo.getValues(login.buf);
 	    		
 	    		for (int i = 0; i < columnname.length; i++) {
@@ -130,6 +132,7 @@ public class Maint {
 	    
 	    btnNewButton_1.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		edit.frame.setVisible(true);
 	    	}
 	    });
 	    btnNewButton_1.setBounds(496, 28, 110, 26);
@@ -143,7 +146,7 @@ public class Maint {
 		
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				pago.getContentPane().setVisible(true);
+				System.out.println("Abre panel de pago");
 				
 				
 			}

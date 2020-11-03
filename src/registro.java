@@ -46,12 +46,12 @@ public class registro {
 	private JTextField textField_1;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField columna1;
+	private JTextField columna2;
+	private JTextField columna3;
+	private JTextField columna4;
 	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField columna5;
 	
 	public static String tableid = registroBack.getId();
 
@@ -63,7 +63,7 @@ public class registro {
 			public void run() {
 				try {
 					registro window = new registro();
-					window.frmRegistro.setVisible(true);
+					registro.frmRegistro.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -147,33 +147,33 @@ public class registro {
 		lblNewLabel_3.setBounds(217, 58, 168, 14);
 		frmRegistro.getContentPane().add(lblNewLabel_3);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(217, 83, 129, 20);
-		frmRegistro.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		columna1 = new JTextField();
+		columna1.setBounds(217, 83, 129, 20);
+		frmRegistro.getContentPane().add(columna1);
+		columna1.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(217, 139, 129, 20);
-		frmRegistro.getContentPane().add(textField_3);
+		columna2 = new JTextField();
+		columna2.setColumns(10);
+		columna2.setBounds(217, 139, 129, 20);
+		frmRegistro.getContentPane().add(columna2);
 		
 		JLabel lblNombreDeColumna = new JLabel("Nombre de Columna 2:");
 		lblNombreDeColumna.setBounds(217, 114, 168, 14);
 		frmRegistro.getContentPane().add(lblNombreDeColumna);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(217, 194, 129, 20);
-		frmRegistro.getContentPane().add(textField_4);
+		columna3 = new JTextField();
+		columna3.setColumns(10);
+		columna3.setBounds(217, 194, 129, 20);
+		frmRegistro.getContentPane().add(columna3);
 		
 		JLabel lblNombreDeColumna_1 = new JLabel("Nombre de Columna 3:");
 		lblNombreDeColumna_1.setBounds(217, 169, 168, 14);
 		frmRegistro.getContentPane().add(lblNombreDeColumna_1);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(217, 250, 129, 20);
-		frmRegistro.getContentPane().add(textField_5);
+		columna4 = new JTextField();
+		columna4.setColumns(10);
+		columna4.setBounds(217, 250, 129, 20);
+		frmRegistro.getContentPane().add(columna4);
 		
 		JLabel lblNombreDeColumna_2 = new JLabel("Nombre de Columna 4:");
 		lblNombreDeColumna_2.setBounds(217, 225, 168, 14);
@@ -188,75 +188,75 @@ public class registro {
 		lblApellidos.setBounds(12, 114, 111, 14);
 		frmRegistro.getContentPane().add(lblApellidos);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(217, 305, 129, 20);
-		frmRegistro.getContentPane().add(textField_7);
+		columna5 = new JTextField();
+		columna5.setColumns(10);
+		columna5.setBounds(217, 305, 129, 20);
+		frmRegistro.getContentPane().add(columna5);
 		
 		JLabel lblNombreDeColumna_3 = new JLabel("Nombre de Columna 5:");
 		lblNombreDeColumna_3.setBounds(217, 280, 168, 14);
 		frmRegistro.getContentPane().add(lblNombreDeColumna_3);
 		
-		JRadioButton String1 = new JRadioButton("String");
-		String1.setSelected(true);
-		String1.setBounds(352, 82, 77, 23);
-		frmRegistro.getContentPane().add(String1);
+		JRadioButton stringCol1 = new JRadioButton("String");
+		stringCol1.setSelected(true);
+		stringCol1.setBounds(352, 82, 77, 23);
+		frmRegistro.getContentPane().add(stringCol1);
 		
-		JRadioButton Int1 = new JRadioButton("Int");
-		Int1.setBounds(431, 82, 58, 23);
-		frmRegistro.getContentPane().add(Int1);
+		JRadioButton intCol1 = new JRadioButton("Int");
+		intCol1.setBounds(431, 82, 58, 23);
+		frmRegistro.getContentPane().add(intCol1);
 		
 		ButtonGroup bg1 = new ButtonGroup();
-		bg1.add(String1);
-		bg1.add(Int1);
+		bg1.add(stringCol1);
+		bg1.add(intCol1);
 		
-		JRadioButton String2 = new JRadioButton("String");
-		String2.setBounds(352, 136, 77, 23);
-		frmRegistro.getContentPane().add(String2);
+		JRadioButton stringCol2 = new JRadioButton("String");
+		stringCol2.setBounds(352, 136, 77, 23);
+		frmRegistro.getContentPane().add(stringCol2);
 		
-		JRadioButton Int2 = new JRadioButton("Int");
-		Int2.setBounds(431, 136, 58, 23);
-		frmRegistro.getContentPane().add(Int2);
+		JRadioButton intCol2 = new JRadioButton("Int");
+		intCol2.setBounds(431, 136, 58, 23);
+		frmRegistro.getContentPane().add(intCol2);
 		
 		ButtonGroup bg2 = new ButtonGroup();
-		bg2.add(String2);
-		bg2.add(Int2);
+		bg2.add(stringCol2);
+		bg2.add(intCol2);
 		
-		JRadioButton String3 = new JRadioButton("String");
-		String3.setBounds(352, 194, 77, 23);
-		frmRegistro.getContentPane().add(String3);
+		JRadioButton stringCol3 = new JRadioButton("String");
+		stringCol3.setBounds(352, 194, 77, 23);
+		frmRegistro.getContentPane().add(stringCol3);
 		
-		JRadioButton Int3 = new JRadioButton("Int");
-		Int3.setBounds(431, 194, 58, 23);
-		frmRegistro.getContentPane().add(Int3);
+		JRadioButton intCol3 = new JRadioButton("Int");
+		intCol3.setBounds(431, 194, 58, 23);
+		frmRegistro.getContentPane().add(intCol3);
 		
 		ButtonGroup bg3 = new ButtonGroup();
-		bg3.add(String3);
-		bg3.add(Int3);
+		bg3.add(stringCol3);
+		bg3.add(intCol3);
 		
-		JRadioButton String4 = new JRadioButton("String");
-		String4.setBounds(352, 246, 77, 23);
-		frmRegistro.getContentPane().add(String4);
+		JRadioButton stringCol4 = new JRadioButton("String");
+		stringCol4.setBounds(352, 246, 77, 23);
+		frmRegistro.getContentPane().add(stringCol4);
 		
-		JRadioButton Int4 = new JRadioButton("Int");
-		Int4.setBounds(431, 246, 58, 23);
-		frmRegistro.getContentPane().add(Int4);
+		JRadioButton intCol4 = new JRadioButton("Int");
+		intCol4.setBounds(431, 246, 58, 23);
+		frmRegistro.getContentPane().add(intCol4);
 		
 		ButtonGroup bg4 = new ButtonGroup();
-		bg4.add(String4);
-		bg4.add(Int4);
+		bg4.add(stringCol4);
+		bg4.add(intCol4);
 		
-		JRadioButton String5 = new JRadioButton("String");
-		String5.setBounds(352, 301, 77, 23);
-		frmRegistro.getContentPane().add(String5);
+		JRadioButton stringCol5 = new JRadioButton("String");
+		stringCol5.setBounds(352, 301, 77, 23);
+		frmRegistro.getContentPane().add(stringCol5);
 		
-		JRadioButton Int5 = new JRadioButton("Int");
-		Int5.setBounds(431, 301, 58, 23);
-		frmRegistro.getContentPane().add(Int5);
+		JRadioButton intCol5 = new JRadioButton("Int");
+		intCol5.setBounds(431, 301, 58, 23);
+		frmRegistro.getContentPane().add(intCol5);
 		
 		ButtonGroup bg5 = new ButtonGroup();
-		bg5.add(String5);
-		bg5.add(Int5);
+		bg5.add(stringCol5);
+		bg5.add(intCol5);
 		
 		JTextArea Txt = new JTextArea();
 		Txt.setBackground(UIManager.getColor("Button.background"));
@@ -308,7 +308,7 @@ public class registro {
 		JButton btnNewButton = new JButton("Continuar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textField.getText() == "" || textField_2.getText() == "" || textField_6.getText() == "" ||
+				if(textField.getText() == "" || columna1.getText() == "" || textField_6.getText() == "" ||
 						!textField_1.getText().contains("@") || passwordField.getText().length() < 5 || passwordField_1.getText().length() < 5) {
 					JOptionPane.showMessageDialog(null, "Algún campo obligatorio puede estar vacío.\n El correo electronico puede estar invalido\n "
 							+ "Recuerda que la contraseña debe tener más de 5 caracteres." ,"Error", 0);
@@ -320,16 +320,17 @@ public class registro {
 					if(registroBack.registrar(textField_1.getText(), AES.encrypt(passwordField.getText(), AES.keyString), tableid)) {
 						textField.setText("");
 						textField_1.setText("");
-						textField_2.setText("");
-						textField_3.setText("");
-						textField_4.setText("");
-						textField_5.setText("");
+						columna1.setText("");
+						columna2.setText("");
+						columna3.setText("");
+						columna4.setText("");
 						textField_6.setText("");
-						textField_7.setText("");
+						columna5.setText("");
 						passwordField.setText("");
 						passwordField_1.setText("");
 						tableid = registroBack.getId();
 						lblNewLabel_5.setText(tableid);
+						frmRegistro.setVisible(false);
 						frmRegistro.dispose();
 					} else {
 						passwordField.setText("");
