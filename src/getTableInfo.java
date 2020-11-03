@@ -103,24 +103,41 @@ public class getTableInfo {
 		}
 		return ret;
 	}
-	public static String[][] getColumnNameID(String tableId, String columName) {
+	
+	
+	public static String[][] getTableInforID(String tableId, String columName) {
 		String list[][] = null;
+		int row = 0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
 			Statement stmt = CON.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT id," + columName + " FROM `" + tableId + "`");
-			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-			list = new String[1][rsmd.getColumnCount()];
-			
-			
+			while(rs.next()) {
+				row++;
+				}
+			list = new String[row][rs.getMetaData().getColumnCount()];
 			CON.close();
-		}catch (SQLException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e);
-			list = new String[0][0]; 
-			list[0][0] = "E " + e.toString(); 
-		}
+			
+			int row0 = 0;
+			Connection CON0 = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			Statement stmt0 = CON0.createStatement();
+			ResultSet rs0 = stmt0.executeQuery("SELECT id," + columName + " FROM `" + tableId + "`");
+			while(rs0.next()) {
+				row0++;
+				for (int i = 1; i <= list[0].length; i++) {
+					list[row0 - 1][i - 1] = rs0.getString(i);
+				}
+			}
+			CON.close();
+			
+			
+			}catch (SQLException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e);
+				list = new String[1][1]; 
+				list[0][0] = "E " + e.toString(); 
+			}
 		return list;
 	}
 	
