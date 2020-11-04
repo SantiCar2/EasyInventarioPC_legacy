@@ -322,7 +322,7 @@ public class registro {
 				} else {
 					System.out.println("Info good " + AES.encrypt(passwordField.getText(), AES.keyString));
 					
-					if(/*registroBack.registrar(textField_1.getText(), AES.encrypt(passwordField.getText(), AES.keyString), tableid)*/ true) {
+					if(/*registroBack.registrar(textField_1.getText(), AES.encrypt(passwordField.getText(), AES.keyString), tableid)*/ true) { // SIMPRE TRUE PARA DEBUGGING
 						textField.setText("");
 						textField_1.setText("");
 						columna1.setText("");
@@ -390,6 +390,8 @@ public class registro {
 						lblNewLabel_5.setText(tableid);
 						frmRegistro.setVisible(false);
 						frmRegistro.dispose();
+						
+						//LLAMAR METODO PARA GENERAR TABLAS
 					} else {
 						passwordField.setText("");
 						passwordField_1.setText("");
