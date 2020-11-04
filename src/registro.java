@@ -33,6 +33,8 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
@@ -46,12 +48,12 @@ public class registro {
 	private JTextField textField_1;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
-	private JTextField columna1;
-	private JTextField columna2;
-	private JTextField columna3;
-	private JTextField columna4;
+	private JTextField columna1 = new JTextField();;
+	private JTextField columna2 = new JTextField();;
+	private JTextField columna3 = new JTextField();;
+	private JTextField columna4 = new JTextField();;
 	private JTextField textField_6;
-	private JTextField columna5;
+	private JTextField columna5 = new JTextField();;
 	
 	public static String tableid = registroBack.getId();
 
@@ -147,12 +149,11 @@ public class registro {
 		lblNewLabel_3.setBounds(217, 58, 168, 14);
 		frmRegistro.getContentPane().add(lblNewLabel_3);
 		
-		columna1 = new JTextField();
 		columna1.setBounds(217, 83, 129, 20);
 		frmRegistro.getContentPane().add(columna1);
 		columna1.setColumns(10);
 		
-		columna2 = new JTextField();
+		columna2.setEditable(false);
 		columna2.setColumns(10);
 		columna2.setBounds(217, 139, 129, 20);
 		frmRegistro.getContentPane().add(columna2);
@@ -161,7 +162,7 @@ public class registro {
 		lblNombreDeColumna.setBounds(217, 114, 168, 14);
 		frmRegistro.getContentPane().add(lblNombreDeColumna);
 		
-		columna3 = new JTextField();
+		columna3.setEditable(false);
 		columna3.setColumns(10);
 		columna3.setBounds(217, 194, 129, 20);
 		frmRegistro.getContentPane().add(columna3);
@@ -170,7 +171,7 @@ public class registro {
 		lblNombreDeColumna_1.setBounds(217, 169, 168, 14);
 		frmRegistro.getContentPane().add(lblNombreDeColumna_1);
 		
-		columna4 = new JTextField();
+		columna4.setEditable(false);
 		columna4.setColumns(10);
 		columna4.setBounds(217, 250, 129, 20);
 		frmRegistro.getContentPane().add(columna4);
@@ -188,7 +189,7 @@ public class registro {
 		lblApellidos.setBounds(12, 114, 111, 14);
 		frmRegistro.getContentPane().add(lblApellidos);
 		
-		columna5 = new JTextField();
+		columna5.setEditable(false);
 		columna5.setColumns(10);
 		columna5.setBounds(217, 305, 129, 20);
 		frmRegistro.getContentPane().add(columna5);
@@ -211,6 +212,7 @@ public class registro {
 		bg1.add(intCol1);
 		
 		JRadioButton stringCol2 = new JRadioButton("String");
+		stringCol2.setSelected(true);
 		stringCol2.setBounds(352, 136, 77, 23);
 		frmRegistro.getContentPane().add(stringCol2);
 		
@@ -223,6 +225,7 @@ public class registro {
 		bg2.add(intCol2);
 		
 		JRadioButton stringCol3 = new JRadioButton("String");
+		stringCol3.setSelected(true);
 		stringCol3.setBounds(352, 194, 77, 23);
 		frmRegistro.getContentPane().add(stringCol3);
 		
@@ -235,6 +238,7 @@ public class registro {
 		bg3.add(intCol3);
 		
 		JRadioButton stringCol4 = new JRadioButton("String");
+		stringCol4.setSelected(true);
 		stringCol4.setBounds(352, 246, 77, 23);
 		frmRegistro.getContentPane().add(stringCol4);
 		
@@ -247,6 +251,7 @@ public class registro {
 		bg4.add(intCol4);
 		
 		JRadioButton stringCol5 = new JRadioButton("String");
+		stringCol5.setSelected(true);
 		stringCol5.setBounds(352, 301, 77, 23);
 		frmRegistro.getContentPane().add(stringCol5);
 		
@@ -309,7 +314,7 @@ public class registro {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textField.getText() == "" || columna1.getText() == "" || textField_6.getText() == "" ||
-						!textField_1.getText().contains("@") || passwordField.getText().length() < 5 || passwordField_1.getText().length() < 5) {
+						!textField_1.getText().contains("@") || passwordField.getText().length() < 5 || passwordField_1.getText().length() < 5 ) {
 					JOptionPane.showMessageDialog(null, "Algún campo obligatorio puede estar vacío.\n El correo electronico puede estar invalido\n "
 							+ "Recuerda que la contraseña debe tener más de 5 caracteres." ,"Error", 0);
 				} else if(!AES.encrypt(passwordField.getText(), AES.keyString).contains(AES.encrypt(passwordField_1.getText(), AES.keyString))) {
@@ -317,7 +322,7 @@ public class registro {
 				} else {
 					System.out.println("Info good " + AES.encrypt(passwordField.getText(), AES.keyString));
 					
-					if(registroBack.registrar(textField_1.getText(), AES.encrypt(passwordField.getText(), AES.keyString), tableid)) {
+					if(/*registroBack.registrar(textField_1.getText(), AES.encrypt(passwordField.getText(), AES.keyString), tableid)*/ true) {
 						textField.setText("");
 						textField_1.setText("");
 						columna1.setText("");
@@ -328,6 +333,59 @@ public class registro {
 						columna5.setText("");
 						passwordField.setText("");
 						passwordField_1.setText("");
+						
+						int numberOfCol = 0;
+						String[] columnName;
+						if(columna5.getText().length() == 0) {
+							if(columna4.getText().length() == 0) {
+								if(columna3.getText().length() == 0) {
+									if(columna2.getText().length() == 0) {
+										numberOfCol = 1;
+										columnName = new String[1];
+										System.out.println("1");
+									} else {
+										numberOfCol = 2;
+										columnName = new String[2];
+										System.out.println("2");
+									}
+								} else {
+									numberOfCol = 3;
+									columnName = new String[3];
+									System.out.println("3");
+								}
+							} else {
+								numberOfCol = 4;
+								columnName = new String[4];
+								System.out.println("4");
+							}
+						} else {
+							numberOfCol = 5;
+							columnName = new String[5];
+							System.out.println("5");
+						}
+						
+						System.out.println(columna1.getText());//NO SIREVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+						
+						for (int i = 0; i < columnName.length; i++) {
+							if(i == 0) {
+								columnName[i] = columna1.getText();
+							}
+							if(i == 1) {
+								columnName[i] = columna2.getText();
+							}
+							if(i == 2) {
+								columnName[i] = columna3.getText();
+							}
+							if(i == 3) {
+								columnName[i] = columna4.getText();
+							}
+							if(i == 4) {
+								columnName[i] = columna5.getText();
+							}
+						}
+						
+						System.out.println(columnName[0]);
+						
 						tableid = registroBack.getId();
 						lblNewLabel_5.setText(tableid);
 						frmRegistro.setVisible(false);
@@ -369,7 +427,63 @@ public class registro {
 		separator.setBounds(497, 8, 2, 316);
 		frmRegistro.getContentPane().add(separator);
 		
-		
-		
+		columna1.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent ke) {
+	            if (columna1.getText().length() <= 1 && ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+	            	columna2.setEditable(false);
+	            	columna2.setText("");
+	            	
+	            	columna3.setEditable(false);
+	            	columna3.setText("");
+	            	
+	            	columna4.setEditable(false);
+	            	columna4.setText("");
+	            	
+	            	columna5.setEditable(false);
+	            	columna5.setText("");
+	            } else {
+	            	columna2.setEditable(true);
+	            }
+			}
+		});
+		columna2.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent ke) {
+	            if (columna2.getText().length() <= 1 && ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+	            	columna3.setEditable(false);
+	            	columna3.setText("");
+	            	
+	            	columna4.setEditable(false);
+	            	columna4.setText("");
+	            	
+	            	columna5.setEditable(false);
+	            	columna5.setText("");
+	            } else {
+	            	columna3.setEditable(true);
+	            }
+			}
+		});
+		columna3.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent ke) {
+	            if (columna3.getText().length() <= 1 && ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+	            	columna4.setEditable(false);
+	            	columna4.setText("");
+	            	
+	            	columna5.setEditable(false);
+	            	columna5.setText("");
+	            } else {
+	            	columna4.setEditable(true);
+	            }
+			}
+		});
+		columna4.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent ke) {
+	            if (columna4.getText().length() <= 1 && ke.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+	            	columna5.setEditable(false);
+	            	columna5.setText("");
+	            } else {
+	            	columna5.setEditable(true);
+	            }
+			}
+		});
 	}
 }

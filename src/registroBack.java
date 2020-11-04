@@ -14,6 +14,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
+import javax.swing.text.TabExpander;
 
 public class registroBack {
 
@@ -137,4 +138,23 @@ public class registroBack {
 		}
 		return duplicate;
 	}
+	
+	public static boolean createTable(String[] names, int[] types, int tableId) { //INT = 1, STRING = 0
+		String [] queries = new String[names.length];
+		for (int i = 0; i < names.length; i++) {
+			if(types[i] == 1) {
+				queries[i] = "`" + names[i] + "` INT NULL,\r\n ";
+			} else {
+				queries[i] = "`" + names[i] + "` VARCHAR(45) NULL,\r\n ";
+			}
+		}
+		
+		String finalQ = "CREATE TABLE `databases`.`" + tableId + "` (\r\n  `id` INT NOT NULL,\\r\\n";
+		for (int i = 0; i < queries.length; i++) {
+			 finalQ = finalQ + queries[i];
+		}
+		System.out.println(finalQ);
+		return true;
+	}
+	
 }
