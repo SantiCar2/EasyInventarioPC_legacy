@@ -129,6 +129,8 @@ public class getTableInfo {
 					list[row0 - 1][i - 1] = rs0.getString(i);
 				}
 			}
+			ResultSetMetaData rsmd = (ResultSetMetaData) rs0.getMetaData();
+			System.out.println(rsmd.getColumnName(2) + "        " + rsmd.getColumnType(2));
 			CON.close();
 			
 			
@@ -139,6 +141,44 @@ public class getTableInfo {
 				list[0][0] = "E " + e.toString(); 
 			}
 		return list;
+	}
+	
+	public static String getOldInfo(String tableId, String columName, int ID) {
+		String list = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			Statement stmt = CON.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT id," + columName + " FROM `" + tableId + "` WHERE id=" + ID);
+			rs.next();
+			list = rs.getString(columName);
+			CON.close();
+			}catch (SQLException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e);
+				list = "E " + e.toString(); 
+			}
+		return list;
+	}
+	
+	public static boolean isID(String tableId, int ID) {
+		boolean isID = false;
+		Connection CON;
+		try {
+			CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			
+			Statement stmt = CON.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT id FROM `" + tableId + "`");
+			while(rs.next()) {
+				if(rs.getInt("id") == ID) {
+					isID = true;
+				}
+			}
+			CON.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return isID;
 	}
 	
 }
