@@ -85,7 +85,7 @@ public class registroBack {
 		try {
 			Connection CON = DriverManager.getConnection(CONN, "auth", "4815162342");
 			Statement stmt = CON.createStatement();
-			String query = "INSERT INTO `login`.`main` (`email`, `password`, `tableId`) VALUES ('" + mail + "', '" + pass + "', '" + tableid + "');";
+			String query = "INSERT INTO `login`.`main` (`email`, `password`, `tableId`, `payment`) VALUES ('" + mail + "', '" + pass + "', '" + tableid + "', '0');";
 			System.out.println(query);
 			
 			Random rand = new Random();
@@ -111,11 +111,13 @@ public class registroBack {
 	         } else {
 	        	 JOptionPane.showMessageDialog(null, "El código de verificación es incorrecto\n Intente nuevamente", "Error de verificación", 0);
 	        	 CON.close();
+	        	 success = false;
 	         }
 			
 			
 		}catch (Exception e) {
 			System.out.println(e);
+			success = false;
 			return success;
 		}
 		return success;
@@ -149,12 +151,35 @@ public class registroBack {
 			}
 		}
 		
-		String finalQ = "CREATE TABLE `databases`.`" + tableId + "` (\r\n  `id` INT NOT NULL,\\r\\n";
+		String finalQ = "CREATE TABLE `databases`.`" + tableId + "` (\r\n  `id` INT NOT NULL,\r\n";
 		for (int i = 0; i < queries.length; i++) {
 			 finalQ = finalQ + queries[i];
 		}
+		finalQ = finalQ + "PRIMARY KEY (`id`));";
 		System.out.println(finalQ);
-		return true;
+		boolean success = true;
+		try {
+			Connection CON = DriverManager.getConnection("jdbc:mysql://190.249.57.11:25565/databases", "mainApp", "4815162342");
+			Statement stmt = CON.createStatement();
+			int rs = stmt.executeUpdate(finalQ);
+			CON.close();
+		}catch(Exception e) {
+			System.out.println(e);
+			success = false;
+		}
+		return success;
+	}
+	
+	public static void deleteUser(int tableid) {
+		String query = "DELETE FROM `login`.`main` WHERE (`tableid` = '" + tableid + "');";
+		try {
+			Connection CON = DriverManager.getConnection(CONN, "auth", "4815162342");
+			Statement stmt = CON.createStatement();
+			int rs = stmt.executeUpdate(query);
+			CON.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 }

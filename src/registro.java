@@ -322,15 +322,10 @@ public class registro {
 				} else {
 					System.out.println("Info good " + AES.encrypt(passwordField.getText(), AES.keyString));
 					
-					if(/*registroBack.registrar(textField_1.getText(), AES.encrypt(passwordField.getText(), AES.keyString), tableid)*/ true) { // SIMPRE TRUE PARA DEBUGGING
+					if(registroBack.registrar(textField_1.getText(), AES.encrypt(passwordField.getText(), AES.keyString), tableid)) {
 						textField.setText("");
 						textField_1.setText("");
-						columna1.setText("");
-						columna2.setText("");
-						columna3.setText("");
-						columna4.setText("");
 						textField_6.setText("");
-						columna5.setText("");
 						passwordField.setText("");
 						passwordField_1.setText("");
 						
@@ -364,7 +359,6 @@ public class registro {
 							System.out.println("5");
 						}
 						
-						System.out.println(columna1.getText());//NO SIREVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 						
 						for (int i = 0; i < columnName.length; i++) {
 							if(i == 0) {
@@ -384,14 +378,65 @@ public class registro {
 							}
 						}
 						
-						System.out.println(columnName[0]);
+						int[] colType = new int[5]; 
+						for (int i = 0; i < 5; i++) {
+							if(i == 0) {
+								if(stringCol1.isSelected()) {
+									colType[i] = 0;
+								} else {
+									colType[i] = 1;
+								}
+							}
+							if(i == 1) {
+								if(stringCol2.isSelected()) {
+									colType[i] = 0;
+								} else {
+									colType[i] = 1;
+								}
+							}
+							if(i == 2) {
+								if(stringCol3.isSelected()) {
+									colType[i] = 0;
+								} else {
+									colType[i] = 1;
+								}
+							}
+							if(i == 3) {
+								if(stringCol4.isSelected()) {
+									colType[i] = 0;
+								} else {
+									colType[i] = 1;
+								}
+							}
+							if(i == 4) {
+								if(stringCol5.isSelected()) {
+									colType[i] = 0;
+								} else {
+									colType[i] = 1;
+								}
+							}
+						}
+						
+						for (int i = 0; i < columnName.length; i++) {
+							System.out.println(columnName[i]);
+						}
+						
+						columna1.setText("");
+						columna2.setText("");
+						columna3.setText("");
+						columna4.setText("");
+						columna5.setText("");	
+						
+						if(registroBack.createTable(columnName, colType, Integer.parseInt(tableid))) {
+							
+						} else {
+							registroBack.deleteUser(Integer.parseInt(tableid));
+						}
 						
 						tableid = registroBack.getId();
 						lblNewLabel_5.setText(tableid);
 						frmRegistro.setVisible(false);
 						frmRegistro.dispose();
-						
-						//LLAMAR METODO PARA GENERAR TABLAS
 					} else {
 						passwordField.setText("");
 						passwordField_1.setText("");
