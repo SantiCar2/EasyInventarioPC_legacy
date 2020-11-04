@@ -277,7 +277,7 @@ public class registro {
 		Txt2.setBounds(512, 142, 216, 74);
 		frmRegistro.getContentPane().add(Txt2);
 		
-		JLabel lblNewLabel_4 = new JLabel("Su id de cliente unico:");
+		JLabel lblNewLabel_4 = new JLabel("Su id de cliente \u00FAnico:");
 		lblNewLabel_4.setBounds(512, 228, 160, 14);
 		frmRegistro.getContentPane().add(lblNewLabel_4);
 		
