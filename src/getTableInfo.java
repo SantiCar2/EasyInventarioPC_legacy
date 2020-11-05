@@ -112,7 +112,7 @@ public class getTableInfo {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
 			Statement stmt = CON.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id," + columName + " FROM `" + tableId + "`");
+			ResultSet rs = stmt.executeQuery("SELECT id,`" + columName + "` FROM `" + tableId + "`");
 			while(rs.next()) {
 				row++;
 				}
@@ -122,7 +122,7 @@ public class getTableInfo {
 			int row0 = 0;
 			Connection CON0 = DriverManager.getConnection(CONN, "mainApp", "4815162342");
 			Statement stmt0 = CON0.createStatement();
-			ResultSet rs0 = stmt0.executeQuery("SELECT id," + columName + " FROM `" + tableId + "`");
+			ResultSet rs0 = stmt0.executeQuery("SELECT id,`" + columName + "` FROM `" + tableId + "`");
 			while(rs0.next()) {
 				row0++;
 				for (int i = 1; i <= list[0].length; i++) {
@@ -149,7 +149,7 @@ public class getTableInfo {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
 			Statement stmt = CON.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id," + columName + " FROM `" + tableId + "` WHERE id=" + ID);
+			ResultSet rs = stmt.executeQuery("SELECT id,`" + columName + "` FROM `" + tableId + "` WHERE id=" + ID);
 			rs.next();
 			list = rs.getString(columName);
 			CON.close();
