@@ -181,4 +181,29 @@ public class getTableInfo {
 		return isID;
 	}
 	
+	public static int getColumnType(String tableid, String columnName) {
+		Connection CON;
+		int columnType = 0;
+		try {
+			CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			
+			Statement stmt = CON.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `" + tableid + "`");
+			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+			int count = rsmd.getColumnCount();
+			for (int i = 1; i <= count; i++)
+			{
+			    if (rsmd.getColumnName(i).equals(columnName))
+			    {
+			        columnType = rsmd.getColumnType(i);
+			    }
+			}
+			CON.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return columnType;
+	}
+	
 }

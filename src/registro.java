@@ -100,8 +100,8 @@ public class registro {
 		
 		
 		frmRegistro = new JFrame();
-		frmRegistro.setAutoRequestFocus(false);
 		frmRegistro.setAlwaysOnTop(true);
+		frmRegistro.setAutoRequestFocus(false);
 		frmRegistro.setType(Type.POPUP);
 		frmRegistro.setResizable(false);
 		frmRegistro.setTitle("Registro");
@@ -110,6 +110,7 @@ public class registro {
 		frmRegistro.getContentPane().setLayout(null);
 		frmRegistro.setUndecorated(true);
 		frmRegistro.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+		//frmRegistro.setLocationRelativeTo(null);
 		
 		JLabel lblNewLabel = new JLabel("Nombres*:");
 		lblNewLabel.setBounds(12, 58, 111, 14);
@@ -282,16 +283,6 @@ public class registro {
 		Txt2.setBounds(512, 142, 216, 74);
 		frmRegistro.getContentPane().add(Txt2);
 		
-		JLabel lblNewLabel_4 = new JLabel("Su id de cliente \u00FAnico:");
-		lblNewLabel_4.setBounds(512, 228, 160, 14);
-		frmRegistro.getContentPane().add(lblNewLabel_4);
-		
-		
-		JLabel lblNewLabel_5 = new JLabel(tableid);
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5.setBounds(571, 255, 80, 31);
-		frmRegistro.getContentPane().add(lblNewLabel_5);
-		
 
 		lblApellidos.setFont(font);
 		lblConfirmarContrasea.setFont(font);
@@ -305,16 +296,20 @@ public class registro {
 		lblNombreDeColumna_3.setFont(font);
 		Txt.setFont(font);
 		Txt2.setFont(font);
-		lblNewLabel_4.setFont(font);
-		lblNewLabel_5.setFont(font2);
 		
 		
 		
 		JButton btnNewButton = new JButton("Continuar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textField.getText() == "" || columna1.getText() == "" || textField_6.getText() == "" ||
-						!textField_1.getText().contains("@") || passwordField.getText().length() < 5 || passwordField_1.getText().length() < 5 ) {
+				boolean ismail = false;
+				String[] mail = textField_1.getText().split("@");
+				if(textField_1.getText().contains("@") && textField_1.getText().contains(".") && mail[1].contains(".")) {
+					ismail = true;
+				}
+				if(textField.getText().length() == 0 || columna1.getText().length() == 0 || textField_6.getText().length() == 0 ||
+						 !ismail || passwordField.getText().length() < 5 || passwordField_1.getText().length() < 5 
+						) {
 					JOptionPane.showMessageDialog(null, "Algún campo obligatorio puede estar vacío.\n El correo electronico puede estar invalido\n "
 							+ "Recuerda que la contraseña debe tener más de 5 caracteres." ,"Error", 0);
 				} else if(!AES.encrypt(passwordField.getText(), AES.keyString).contains(AES.encrypt(passwordField_1.getText(), AES.keyString))) {
@@ -434,14 +429,12 @@ public class registro {
 						}
 						
 						tableid = registroBack.getId();
-						lblNewLabel_5.setText(tableid);
 						frmRegistro.setVisible(false);
 						frmRegistro.dispose();
 					} else {
 						passwordField.setText("");
 						passwordField_1.setText("");
 						tableid = registroBack.getId();
-						lblNewLabel_5.setText(tableid);
 					}
 					
 					

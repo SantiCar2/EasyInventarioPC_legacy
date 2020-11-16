@@ -47,7 +47,7 @@ public class forgotpass {
 		         MimeMessage message = new MimeMessage(session);
 		         message.setFrom(new InternetAddress(from));
 		         message.addRecipient(Message.RecipientType.TO, new InternetAddress(mail));
-		         message.setSubject("Codigo de verificación de tu cuenta de EasyInventario");
+		         message.setSubject("Codigo de verificación para el cambio de contraseña de cuanta de EasyInventario");
 		         message.setText("Su código de verificación es " + verif);
 
 		         Transport.send(message);

@@ -100,7 +100,7 @@ public class login {
 				if(txtCorreo.getText() != null && passwordField.getText() != null) {
 					buf = authenticator.connect(txtCorreo.getText(), AES.encrypt(passwordField.getText(), AES.keyString));
 					if(buf != null && !buf.contains("E")) {
-						//JOptionPane.showMessageDialog(null, "Se ha conectado exitosamente al servidor!" ,"Info", 1);
+						JOptionPane.showMessageDialog(null, "Se ha conectado exitosamente al servidor!" ,"Info", 1);
 						auth = true;
 					}else if (buf != null) {
 						buf = buf.split(":", 2)[1];
@@ -151,13 +151,28 @@ public class login {
 				forgotpass.main();
 			}
 		});
-		btnNewButton_2.setBounds(372, 30, 276, 23);
+		btnNewButton_2.setBounds(372, 30, 225, 23);
 		frmInicioDeSesin.getContentPane().add(btnNewButton_2);
 		
 		
 		btnNewButton.setFont(font);
 		btnNewButton_1.setFont(font);
 		btnNewButton_2.setFont(font);
+		
+		JButton btnNewButton_3 = new JButton("?");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				try {
+					desktop.browse(new URI("https://docs.google.com/forms/d/e/1FAIpQLSdIjptRSYaU76ruNC926fvyjgbFhEMy0kQjpqEn6rx68um0Lw/viewform"));
+				} catch (Exception ex) {
+					// TODO: handle exception
+				}
+			}
+		});
+		btnNewButton_3.setBounds(603, 30, 45, 23);
+		frmInicioDeSesin.getContentPane().add(btnNewButton_3);
+		btnNewButton_3.setFont(font);
 		
 	}
 	
