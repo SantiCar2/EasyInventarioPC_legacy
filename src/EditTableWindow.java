@@ -272,10 +272,15 @@ public class EditTableWindow {
 						int number;
 						try {
 							number = Integer.parseInt(textField_2.getText());
-							
+							System.out.println(number);
+							//INT
+							updateTable.editTable(login.buf, comboBox_1.getSelectedItem().toString(), textField_2.getText(), Integer.parseInt(textField.getText()));
 						} catch(Exception e1) {
 							JOptionPane.showMessageDialog(null, "El contenido de la información no coincide\n con el tipo de columna." ,"Error", 0);
 						}
+					} else {
+						//STRING
+						updateTable.editTable(login.buf, comboBox_1.getSelectedItem().toString(), textField_2.getText(), Integer.parseInt(textField.getText()));
 					}
 				}
 			}
