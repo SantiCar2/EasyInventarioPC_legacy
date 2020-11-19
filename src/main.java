@@ -14,7 +14,7 @@ public class main {
 		init.frmInicioDeSesin.setVisible(false);
 		main.frame.setVisible(true);
 		init.frmInicioDeSesin.dispose();
-		
+		//comentario
 	}
 
 }

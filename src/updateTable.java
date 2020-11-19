@@ -25,4 +25,9 @@ public class updateTable {
 			e.printStackTrace();
 		}
 	}
+	public static boolean addTable(String tableId, String[] columnName, String[] newInfo) {
+		boolean ok = false;
+		
+		return ok;
+	}
 }

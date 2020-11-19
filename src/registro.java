@@ -100,17 +100,17 @@ public class registro {
 		
 		
 		frmRegistro = new JFrame();
+		frmRegistro.setBackground(UIManager.getColor("Button.background"));
 		frmRegistro.setAlwaysOnTop(true);
 		frmRegistro.setAutoRequestFocus(false);
-		frmRegistro.setType(Type.POPUP);
+		frmRegistro.setType(Type.UTILITY);
 		frmRegistro.setResizable(false);
 		frmRegistro.setTitle("Registro");
-		frmRegistro.setBounds(100, 100, 742, 340);
-		frmRegistro.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frmRegistro.setBounds(100, 100, 742, 370);
+		frmRegistro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmRegistro.getContentPane().setLayout(null);
-		frmRegistro.setUndecorated(true);
-		frmRegistro.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
-		//frmRegistro.setLocationRelativeTo(null);
+		//frmRegistro.setUndecorated(true);
+		//frmRegistro.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 		
 		JLabel lblNewLabel = new JLabel("Nombres*:");
 		lblNewLabel.setBounds(12, 58, 111, 14);

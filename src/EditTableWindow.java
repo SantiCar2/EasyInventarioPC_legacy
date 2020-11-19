@@ -79,17 +79,18 @@ public class EditTableWindow {
 	 */
 	private void initialize() throws FontFormatException, IOException {
 		
-		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\font.ttf"));
+		Font font = Font.createFont(Font.TRUETYPE_FONT, new File("font.ttf"));
 		font = font.deriveFont(Font.PLAIN, 15);
-		Font font2 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\santi\\eclipse-workspace\\Proyecto 2\\font.ttf"));
+		Font font2 = Font.createFont(Font.TRUETYPE_FONT, new File("font.ttf"));
 		font2 = font2.deriveFont(Font.PLAIN, 25);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		ge.registerFont(font);
 		ge.registerFont(font2);
 		
 		frame = new JFrame();
+		frame.setType(Type.UTILITY);
 		frame.setBounds(100, 100, 897, 469);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -267,7 +268,7 @@ public class EditTableWindow {
 			public void actionPerformed(ActionEvent e) {
 				if(textField_2.getText().length() == 0) {
 					JOptionPane.showMessageDialog(null, "Para guardar cambios debes llenar los campos obligatorios." ,"Error", 0);
-				} else {
+				} else if(JOptionPane.showConfirmDialog(null, "¿Seguro que deseas continuar?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
 					if(getTableInfo.getColumnType(login.buf, comboBox_1.getSelectedItem().toString()) == 4) {
 						int number;
 						try {
@@ -275,8 +276,12 @@ public class EditTableWindow {
 							System.out.println(number);
 							//INT
 							updateTable.editTable(login.buf, comboBox_1.getSelectedItem().toString(), textField_2.getText(), Integer.parseInt(textField.getText()));
+							frame.setVisible(false);
+							frame.dispose();
 						} catch(Exception e1) {
 							JOptionPane.showMessageDialog(null, "El contenido de la información no coincide\n con el tipo de columna." ,"Error", 0);
+							frame.setVisible(false);
+							frame.dispose();
 						}
 					} else {
 						//STRING

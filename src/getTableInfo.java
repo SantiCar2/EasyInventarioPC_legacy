@@ -206,4 +206,58 @@ public class getTableInfo {
 		return columnType;
 	}
 	
+	public static int generateId(String tableId) {
+		Connection CON;
+		Connection CON1;
+		int numberOfRows = 0;
+		int[] idList = null;
+		int grande = 0;
+		
+		try {
+			CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			
+			Statement stmt = CON.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT id FROM `" + tableId + "`");
+			while(rs.next()) {
+				numberOfRows++;
+			}
+			CON.close();
+			idList = new int[numberOfRows];
+			int x = 0;
+			
+			CON1 = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			Statement stmt2 = CON1.createStatement();
+			ResultSet rs2 = stmt2.executeQuery("SELECT id FROM `" + tableId + "`");
+			while(rs2.next()) {
+				idList[x] = rs2.getInt("id");
+				x++;
+			}
+			CON1.close();
+			for (int i = 0; i < idList.length; i++) {
+				if(idList[i] > grande) {
+					grande = idList[i];
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(grande);
+		return grande + 1;
+	}
+	public static int columnCount(String tableId) {
+		Connection CON;
+		int columnsNumber = 0;
+		try {
+			CON = DriverManager.getConnection(CONN, "mainApp", "4815162342");
+			
+			Statement st = CON.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM `" + tableId + "`");
+			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+
+			columnsNumber = rsmd.getColumnCount();
+		} catch(Exception e) {
+			
+		}
+		return columnsNumber;
+	}
 }
